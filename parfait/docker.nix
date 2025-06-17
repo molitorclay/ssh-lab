@@ -26,7 +26,8 @@ in
 
 pkgs.dockerTools.buildImage {
   name = "parfait";
-
+  tag = "latest";
+  
   copyToRoot = with pkgsLinux; [
     openssh
     bashInteractive
