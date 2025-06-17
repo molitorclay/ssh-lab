@@ -11,21 +11,22 @@ let
     chmod 600 $out/.ssh/authorized_keys
   '';
   sshHostSetup = pkgsLinux.runCommand "ssh-host-keys" {
-    nativeBuildInputs = [ pkgsLinux.openssh ];
+    nativeBuildInputs = [ 
+      pkgsLinux.openssh 
+      pkgsLinux.shadow
+      pkgsLinux.su
+    ];
   } ''
     mkdir -p $out/etc/ssh
     ssh-keygen -A -f $out
     chmod 700 $out/etc/ssh/ssh_host_ed25519_key
     chmod 700 $out/etc/ssh/* -R
-
-
-    echo "sshd:x:1000:1000:sshd user:/var/empty:/bin/false" > $out/etc/passwd
-    echo "sshd:x:1000:" > $out/etc/group
   '';
 in
 
 pkgs.dockerTools.buildImage {
   name = "parfait";
+
   copyToRoot = with pkgsLinux; [
     openssh
     bashInteractive
@@ -34,9 +35,20 @@ pkgs.dockerTools.buildImage {
     asciiquarium
     sshDir
     sshHostSetup
+    shadow
   ];
 
   config = {
-    Cmd = [ "bash" ];
+    Cmd = ["bash"  ];
   };
+  runAsRoot = ''
+    
+    useradd -r -M -d /var/empty/sshd -s /sbin/nologin sshd
+    mkdir /var/empty/sshd -p
+    chmod 700 /etc/ssh/ -R
+
+    useradd joe -m -s /bin/bash
+    mkdir -p /home/joe/.ssh
+    cp .ssh/authorized_keys /home/joe/.ssh/authorized_keys 
+  '';
 }
