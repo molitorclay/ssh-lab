@@ -13,6 +13,7 @@ RUN echo $USER":4597" | chpasswd
 
 USER root
 RUN apk add openssh
+EXPOSE 22
 RUN apk add bash
 
 
