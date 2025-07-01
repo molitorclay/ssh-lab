@@ -12,7 +12,7 @@ RUN echo $USER":4597" | chpasswd
 
 
 USER root
-RUN apk add ssh
+RUN apk add openssh
 
 
 RUN echo "Welcome to the SSH Lab!" >/etc/motd
