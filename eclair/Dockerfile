@@ -12,13 +12,15 @@ RUN adduser $USER -D && \
 
 
 USER root
-RUN apk add bash
+RUN apk add sshd
+
+
+RUN echo "Welcome to the SSH Lab!" >/etc/motd
 
 # --------- login --------
 USER $USER
 WORKDIR /home/$USER
 ENV USER=$USER
 # Launch nix-shell instead of bash. RUN builds nix-shell for faster login
-CMD /home/$USER/.nix-profile/bin/nix-shell 
-#CMD ["bash"]
+CMD ["bash"]
 
