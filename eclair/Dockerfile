@@ -6,8 +6,8 @@ FROM alpine:3.21
 ARG USER
 
 #TODO add password 
-RUN adduser $USER -D && \
-    echo $USER":4597" | chpasswd
+RUN adduser $USER -D
+RUN echo $USER":4597" | chpasswd
 
 
 
