@@ -15,12 +15,12 @@ RUN apk add sudo bash fish
 # --------- Setup SSHD ---------
 
 USER root
-RUN apk add openssh
-EXPOSE 22
-#RUN rc-update add sshd
+#RUN apk add openssh
 RUN apk add alpine-conf
+#RUN rc-update add sshd
 RUN setup-sshd -c openssh
 
+EXPOSE 22
 
 RUN echo "Welcome to the SSH Lab!" >/etc/motd
 
@@ -29,5 +29,5 @@ USER $USER
 WORKDIR /home/$USER
 ENV USER=$USER
 # Launch nix-shell instead of bash. RUN builds nix-shell for faster login
-CMD ["bash"]
+CMD ["fish"]
 
