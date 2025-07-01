@@ -14,7 +14,8 @@ RUN echo $USER":4597" | chpasswd
 USER root
 RUN apk add openssh
 EXPOSE 22
-RUN rc-update add sshd
+#RUN rc-update add sshd
+RUN setup-sshd -c openssh
 
 RUN apk add bash
 RUN apk add sudo
