@@ -14,8 +14,10 @@ RUN echo $USER":4597" | chpasswd
 USER root
 RUN apk add openssh
 EXPOSE 22
-RUN apk add bash
+RUN rc-update add sshd
 
+RUN apk add bash
+RUN apk add sudo
 
 RUN echo "Welcome to the SSH Lab!" >/etc/motd
 
