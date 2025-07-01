@@ -25,7 +25,8 @@ EXPOSE 22
 RUN echo "Welcome to the SSH Lab!" >/etc/motd
 
 # --------- login --------
-USER $USER
+#USER $USER
+USER root 
 WORKDIR /home/$USER
 ENV USER=$USER
 # Launch nix-shell instead of bash. RUN builds nix-shell for faster login
