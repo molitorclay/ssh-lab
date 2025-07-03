@@ -5,7 +5,7 @@ FROM alpine:3.21
 # --build-arg USER=Jiminy
 ARG USER
 
-#TODO add password 
+#TODO add password
 RUN adduser $USER -D
 RUN echo $USER":124" | chpasswd
 RUN echo  "root:124" | chpasswd
@@ -15,9 +15,9 @@ RUN apk add sudo bash tmux screen
 
 # --------- Setup SSHD ---------
 USER root
-RUN apk add --update --no-cache openssh 
+RUN apk add --update --no-cache openssh
 RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
-RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN ssh-keygen -A
 #ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 22
@@ -28,8 +28,6 @@ RUN echo "Welcome to the SSH Lab!" >/etc/motd
 
 # --------- login --------
 #USER $USER
-USER root 
+USER root
 WORKDIR /home/$USER
-CMD ["sh"]
-#CMD ["sh", "-c", "/usr/sbin/sshd -D"]
-
+CMD ["sh", "-c", "/usr/sbin/sshd -D"]
