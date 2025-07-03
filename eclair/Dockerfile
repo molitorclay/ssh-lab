@@ -17,6 +17,7 @@ RUN apk add sudo bash tmux screen
 USER root
 RUN apk add --update --no-cache openssh 
 RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
+Run echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN ssh-keygen -A
 #ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 22
