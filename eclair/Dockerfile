@@ -30,5 +30,6 @@ RUN echo "Welcome to the SSH Lab!" >/etc/motd
 #USER $USER
 USER root 
 WORKDIR /home/$USER
-CMD ["sh", "-c", "/usr/sbin/sshd -D"]
+CMD ["sh"]
+#CMD ["sh", "-c", "/usr/sbin/sshd -D"]
 
