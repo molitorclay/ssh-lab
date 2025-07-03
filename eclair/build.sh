@@ -3,7 +3,7 @@
 
 git add *
 
-git commit -m "BUILD-TEST" --squash 
+git commit -m "fixup! BUILD-TEST"  
 sudo docker build -t "ssh-lab" . --build-arg USER=$1 && \
 sudo docker run -it --rm ssh-lab 
 
