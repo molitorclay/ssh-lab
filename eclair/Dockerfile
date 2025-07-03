@@ -7,20 +7,21 @@ ARG USER
 
 #TODO add password 
 RUN adduser $USER -D
-RUN echo $USER":4597" | chpasswd
+RUN echo $USER":124" | chpasswd
+RUN echo  "root:124" | chpasswd
 
 
-RUN apk add sudo bash fish
+RUN apk add sudo bash tmux screen
 
 # --------- Setup SSHD ---------
-
 USER root
-#RUN apk add openssh
-RUN apk add alpine-conf
-#RUN rc-update add sshd
-RUN setup-sshd -c openssh
-
+RUN apk add --update --no-cache openssh 
+RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
+RUN ssh-keygen -A
+#ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 22
+COPY ./ssh/id_ed25519.pub /home/$USER/.ssh/authorized_keys
+COPY ./ssh/id_ed25519.pub  /home/root/.ssh/authorized_keys
 
 RUN echo "Welcome to the SSH Lab!" >/etc/motd
 
@@ -28,7 +29,5 @@ RUN echo "Welcome to the SSH Lab!" >/etc/motd
 #USER $USER
 USER root 
 WORKDIR /home/$USER
-ENV USER=$USER
-# Launch nix-shell instead of bash. RUN builds nix-shell for faster login
-CMD ["fish"]
+CMD ["sh", "-c", "/usr/sbin/sshd -D"]
 
