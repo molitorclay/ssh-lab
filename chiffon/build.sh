@@ -5,6 +5,6 @@ git add *
 
 git commit -m "fixup! BUILD-TEST"  
 sudo docker build -t "ssh-lab" . --build-arg USER=$1 && \
-sudo docker run -it --rm ssh-lab --privilaged
+sudo docker run -it --rm ssh-lab --privileged
 
 
