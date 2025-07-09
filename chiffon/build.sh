@@ -4,7 +4,7 @@
 git add *
 echo "TEST: " $@
 git commit -m "fixup! BUILD-TEST"  
-sudo docker build -t "ssh-lab" . "$@" && \
-sudo docker run --privileged -it --rm ssh-lab 
+docker build -t "ssh-lab" . "$@" && \
+docker run --privileged -it --rm ssh-lab 
 
 
