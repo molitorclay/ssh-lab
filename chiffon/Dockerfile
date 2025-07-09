@@ -5,7 +5,7 @@ FROM alpine:latest
 # --build-arg USER=Jiminy
 ARG USER
 ARG SSHD_CONFIG
-
+ARG USER_KEY
 
 #TODO add password
 RUN adduser $USER -D
@@ -25,8 +25,8 @@ RUN ssh-keygen -A
 COPY $SSHD_CONFIG /etc/ssh/sshd_config
 
 EXPOSE 22
-COPY ./ssh/id_ed25519.pub /home/$USER/.ssh/authorized_keys
-COPY ./ssh/id_ed25519.pub  /home/root/.ssh/authorized_keys
+COPY $USER_KEY /home/$USER/.ssh/authorized_keys
+#COPY ./ssh/id_ed25519.pub  /home/root/.ssh/authorized_keys
 
 RUN echo "Welcome to SSH Lab!" >/etc/motd
 
