@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 
-# pass username at runtime
+# pass args at buildtime
 # --build-arg USER=Jiminy
 ARG USER
 ARG SSHD_CONFIG
