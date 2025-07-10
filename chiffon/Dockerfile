@@ -26,7 +26,9 @@ COPY $SSHD_CONFIG /etc/ssh/sshd_config
 
 EXPOSE 22
 COPY $USER_KEY /home/$USER/.ssh/authorized_keys
-#COPY ./ssh/id_ed25519.pub  /home/root/.ssh/authorized_keys
+
+# Allow self ssh for debugging
+COPY ./ssh/id_ed25519  /home/$USER/.ssh/id_ed25519
 
 RUN echo "Welcome to SSH Lab!" >/etc/motd
 
