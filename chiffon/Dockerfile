@@ -21,16 +21,19 @@ RUN apk add --update --no-cache openssh
 #RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
 #RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN ssh-keygen -A
+RUN echo "Welcome to SSH Lab!" >/etc/motd
 
 COPY $SSHD_CONFIG /etc/ssh/sshd_config
 
 EXPOSE 22
+
+USER $USER
 COPY $USER_KEY /home/$USER/.ssh/authorized_keys
 
 # Allow self ssh for debugging
 COPY ./ssh/id_ed25519  /home/$USER/.ssh/id_ed25519
 
-RUN echo "Welcome to SSH Lab!" >/etc/motd
+
 
 # --------- login --------
 #USER $USER
