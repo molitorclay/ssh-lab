@@ -27,12 +27,11 @@ COPY $SSHD_CONFIG /etc/ssh/sshd_config
 
 EXPOSE 22
 
-USER $USER
 COPY $USER_KEY /home/$USER/.ssh/authorized_keys
 
 # Allow self ssh for debugging
 COPY ./ssh/id_ed25519  /home/$USER/.ssh/id_ed25519
-
+RUN chown $USER /home/$USER/.ssh/id_ed25519  
 
 
 # --------- login --------
