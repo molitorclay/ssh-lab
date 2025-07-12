@@ -1,0 +1,24 @@
+Challenges:
+    port tunneling
+    reverse port tunneling
+    tunneling nmap with proxychains4
+    port tunneling without ssh 
+
+    moving files with scp
+    moving files without scp
+
+    agent forwarding
+
+    loging in with pivate key
+
+sshd_config settings:
+    AllowTcpForwarding
+        PermitOpen
+        ListenAddress
+    DisableForwarding
+    PermitTunnel
+   
+
+   IP TABLES block non-neighbor
+
+
