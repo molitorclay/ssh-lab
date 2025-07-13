@@ -2,9 +2,9 @@
 # Build, run, and commit 
 
 git add *
-
+echo "TEST: " $@
 git commit -m "fixup! BUILD-TEST"  
-sudo docker build -t "ssh-lab" . --build-arg USER=$1 && \
-sudo docker run -it --rm ssh-lab 
+docker build -t "ssh-lab" . "$@" && \
+docker run --privileged -it --rm ssh-lab 
 
 
