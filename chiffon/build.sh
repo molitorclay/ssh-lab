@@ -2,8 +2,7 @@
 # Build, run, and commit 
 
 git add *
-echo "TEST: " $@
-git commit -m "fixup! BUILD-TEST"  
+git commit --fixup -m "BUILD-TEST"  
 docker build -t "ssh-lab" . "$@" && \
 docker run -it --rm ssh-lab 
 
