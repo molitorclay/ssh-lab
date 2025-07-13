@@ -17,6 +17,8 @@ sshd_config settings:
         ListenAddress
     DisableForwarding
     PermitTunnel
-    
+   
+
+   IP TABLES block non-neighbor
 
 
