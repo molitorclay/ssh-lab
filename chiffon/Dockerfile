@@ -4,9 +4,9 @@ FROM alpine:latest
 # pass args at buildtime
 # --build-arg USER=Jiminy
 ARG USER
-ARG SSHD_CONFIG
+#ARG SSHD_CONFIG
 ARG AUTHORIZED_KEY
-ARG SSH_KEY_DIR
+#ARG SSH_KEY_DIR
 
 EXPOSE 22
 
@@ -28,12 +28,11 @@ RUN echo "Welcome to SSH Lab!" >/etc/motd
 
 COPY $SSHD_CONFIG /etc/ssh/sshd_config
 
-COPY ./ssh/  /home/$USER/.ssh/
-COPY ./ssh/id_ed25519 /home/$USER/.ssh/authorized_keys
-#RUN chown -R $USER /home/$USER/.ssh/*
+COPY ssh/            /home/$USER/.ssh/
+COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
 RUN chown -R $USER:$USER /home/$USER/.ssh/
-RUN chmod 700   /home/$USER/.ssh/*
-RUN chmod 600   /home/$USER/.ssh/authorized_keys
+RUN chmod 700 -R /home/$USER/.ssh/
+RUN chmod 600    /home/$USER/.ssh/authorized_keys
 
 # Allow self ssh for debugging
 #COPY ./ssh/id_ed25519  /home/$USER/.ssh/id_ed25519
