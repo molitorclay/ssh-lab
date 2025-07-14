@@ -39,4 +39,5 @@ RUN chown $USER /home/$USER/.ssh/id_ed25519
 USER root
 WORKDIR /home/$USER
 # Start sshd and allow Ctrl-C breaking
-CMD ["sh", "-c", "/usr/sbin/sshd -D; sh"]
+#CMD ["sh", "-c", "/usr/sbin/sshd -D; sh"]
+CMD ["/usr/sbin/sshd -D"]

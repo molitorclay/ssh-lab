@@ -1,0 +1,29 @@
+services:
+  ssh_a:
+    build:
+      context: .
+      args:
+        USER: rta 
+        SSHD_CONFIG: ssh/sshd_config
+        USER_KEY: ssh/id_ed25519.pub
+    ports:
+      - "2222:22"
+    networks: 
+      - internal
+    
+  ssh_b:
+    build:
+      context: .
+      args:
+        USER: rta
+        SSHD_CONFIG: ssh/sshd_config
+        USER_KEY: ssh/id_ed25519.pub
+    networks:
+      - internal
+
+
+
+
+
+networks:
+  internal: {}
