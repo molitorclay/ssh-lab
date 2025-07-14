@@ -1,11 +1,11 @@
 services:
   ssh_a:
     build:
-      context: .
+      context: bld/a
       args:
         USER: rta 
         #SSHD_CONFIG: sshd_config
-        #AUTHORIZED_KEY: ssh/id_ed25519.pub
+        AUTHORIZED_KEY: ssh/id_ed25519.pub
         #SSH_KEY_DIR: ssh/id_ed25519
     ports:
       - "2222:22"
@@ -14,11 +14,11 @@ services:
     
   ssh_b:
     build:
-      context: .
+      context: bld/b
       args:
         USER: rta
         #SSHD_CONFIG: sshd_config
-        #AUTHORIZED_KEY: ssh/id_ed25519.pub
+        AUTHORIZED_KEY: ssh/id_ed25519.pub
         #SSH_KEY_DIR: ssh/id_ed25519
     networks:
       - internal
