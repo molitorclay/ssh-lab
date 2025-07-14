@@ -3,7 +3,7 @@ services:
     build:
 
       context: a
-      dockerfile: Dockerfile 
+      dockerfile: ../Dockerfile 
       args:
         USER: rta 
         #SSHD_CONFIG: sshd_config
