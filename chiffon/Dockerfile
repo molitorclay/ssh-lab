@@ -32,8 +32,8 @@ COPY ../sshd_config /etc/ssh/sshd_config
 COPY ssh/            /home/$USER/.ssh/
 COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
 RUN chown -R $USER:$USER /home/$USER/.ssh/
-RUN chmod 700 -R /home/$USER/.ssh/
-RUN chmod 600    /home/$USER/.ssh/authorized_keys
+RUN chmod 700  /home/$USER/.ssh/*
+RUN chmod 600  /home/$USER/.ssh/authorized_keys
 
 # Allow self ssh for debugging
 #COPY ./ssh/id_ed25519  /home/$USER/.ssh/id_ed25519
