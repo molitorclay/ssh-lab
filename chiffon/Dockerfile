@@ -31,6 +31,7 @@ COPY $SSHD_CONFIG /etc/ssh/sshd_config
 COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
 COPY $PRIV_KEY  /home/$USER/.ssh/
 RUN chown $USER /home/$USER/.ssh/*
+RUN chown $USER /home/$USER/.ssh/
 RUN chmod 700   /home/$USER/.ssh/*
 RUN chmod 700   /home/$USER/.ssh/authorized_keys
 
