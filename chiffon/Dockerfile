@@ -46,5 +46,4 @@ WORKDIR /home/$USER
 #CMD ["sh", "-c", "/usr/sbin/sshd -D; sh"]
 RUN rc-update add sshd
 
-CMD ["/bin/bash"]
 #CMD ["/usr/sbin/sshd", "-D"]
