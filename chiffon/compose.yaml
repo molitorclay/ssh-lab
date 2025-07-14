@@ -1,6 +1,6 @@
 services:
   ssh_a:
-    build:
+    build: ./
       context: a
       args:
         USER: rta 

@@ -2,7 +2,7 @@ FROM alpine:latest
 
 # pass args at buildtime
 # --build-arg USER=Jiminy
-ARG USER
+ARG USER=rta 
 #ARG SSHD_CONFIG
 ARG AUTHORIZED_KEY
 #ARG SSH_KEY_DIR
