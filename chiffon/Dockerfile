@@ -16,7 +16,7 @@ RUN adduser $USER -D
 #RUN echo  "root:124" | chpasswd
 
 
-RUN apk add --no-cache sudo bash tmux screen
+RUN apk add --no-cache sudo bash tmux 
 
 # --------- Setup SSHD ---------
 USER root
@@ -30,10 +30,10 @@ COPY $SSHD_CONFIG /etc/ssh/sshd_config
 
 COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
 COPY $PRIV_KEY  /home/$USER/.ssh/
-RUN chown $USER /home/$USER/.ssh/*
-RUN chown $USER /home/$USER/.ssh/
+#RUN chown -R $USER /home/$USER/.ssh/*
+RUN chown -R $USER:$USER /home/$USER/.ssh/
 RUN chmod 700   /home/$USER/.ssh/*
-RUN chmod 700   /home/$USER/.ssh/authorized_keys
+RUN chmod 600   /home/$USER/.ssh/authorized_keys
 
 # Allow self ssh for debugging
 #COPY ./ssh/id_ed25519  /home/$USER/.ssh/id_ed25519
