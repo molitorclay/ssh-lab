@@ -43,4 +43,4 @@ RUN chmod 600  /home/$USER/.ssh/authorized_keys
 USER root
 WORKDIR /home/$USER
 # Start sshd and allow Ctrl-C breaking
-#CMD ["sh", "-c", "/usr/sbin/sshd -D; sh"]
+CMD ["sh", "-c", "/usr/sbin/sshd -D; sh"]
