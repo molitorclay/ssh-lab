@@ -26,7 +26,7 @@ RUN ssh-keygen -A
 RUN echo "Welcome to SSH Lab!" >/etc/motd
 
 #COPY $SSHD_CONFIG /etc/ssh/sshd_config
-COPY sshd_config /etc/ssh/sshd_config
+COPY ../sshd_config /etc/ssh/sshd_config
 
 COPY ssh/            /home/$USER/.ssh/
 COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
