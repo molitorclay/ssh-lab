@@ -26,6 +26,8 @@ RUN echo "Welcome to SSH Lab!" >/etc/motd
 #COPY $SSHD_CONFIG /etc/ssh/sshd_config
 #COPY ../sshd_config /etc/ssh/sshd_config
 
+#Clear and recreate sshd_config
+RUN echo '#sshd_config' > /etc/sshd_config
 RUN echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
 RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config
