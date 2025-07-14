@@ -1,7 +1,7 @@
 services:
   ssh_a:
     build:
-      context: bld/a
+      context: ./bld/a
       args:
         USER: rta 
         #SSHD_CONFIG: sshd_config
@@ -14,7 +14,7 @@ services:
     
   ssh_b:
     build:
-      context: bld/b
+      context: ./bld/b
       args:
         USER: rta
         #SSHD_CONFIG: sshd_config
