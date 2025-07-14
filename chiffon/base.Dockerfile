@@ -1,6 +1,5 @@
 FROM alpine:latest
 
-
 # pass args at buildtime
 # --build-arg USER=Jiminy
 ARG USER
@@ -44,4 +43,3 @@ USER root
 WORKDIR /home/$USER
 # Start sshd and allow Ctrl-C breaking
 #CMD ["sh", "-c", "/usr/sbin/sshd -D; sh"]
-CMD ["/usr/sbin/sshd", "-D"]
