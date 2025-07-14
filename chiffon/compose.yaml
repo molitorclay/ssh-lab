@@ -2,7 +2,6 @@ services:
   ssh_a:
     build:
       context: a
-      dockerFile: base.Dockerfile
       args:
         USER: rta 
         #SSHD_CONFIG: sshd_config
