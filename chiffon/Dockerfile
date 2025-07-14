@@ -44,6 +44,7 @@ USER root
 WORKDIR /home/$USER
 # Start sshd and allow Ctrl-C breaking
 #CMD ["sh", "-c", "/usr/sbin/sshd -D; sh"]
-#CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/bin/bash"]
 RUN rc-update add sshd
 
+CMD ["/usr/sbin/sshd", "-D"]
