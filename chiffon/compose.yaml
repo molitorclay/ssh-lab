@@ -4,9 +4,9 @@ services:
       context: .
       args:
         USER: rta 
-        SSHD_CONFIG: sshd_config
-        AUTHORIZED_KEY: ssh/id_ed25519.pub
-        PRIV_KEY: ssh/id_ed25519
+        #SSHD_CONFIG: sshd_config
+        #AUTHORIZED_KEY: ssh/id_ed25519.pub
+        #SSH_KEY_DIR: ssh/id_ed25519
     ports:
       - "2222:22"
     networks: 
@@ -17,9 +17,9 @@ services:
       context: .
       args:
         USER: rta
-        SSHD_CONFIG: sshd_config
-        AUTHORIZED_KEY: ssh/id_ed25519.pub
-        PRIV_KEY: ssh/id_ed25519
+        #SSHD_CONFIG: sshd_config
+        #AUTHORIZED_KEY: ssh/id_ed25519.pub
+        #SSH_KEY_DIR: ssh/id_ed25519
     networks:
       - internal
 

@@ -6,13 +6,14 @@ FROM alpine:latest
 ARG USER
 ARG SSHD_CONFIG
 ARG AUTHORIZED_KEY
+ARG SSH_KEY_DIR
 
 EXPOSE 22
 
-#TODO add password
 RUN adduser $USER -D
-#RUN echo $USER":124" | chpasswd
-#RUN echo  "root:124" | chpasswd
+# NOTE removing chpasswd disables publickey ssh sign in
+RUN echo $USER":124" | chpasswd
+RUN echo  "root:124" | chpasswd
 
 
 RUN apk add --no-cache sudo bash tmux 
@@ -27,8 +28,8 @@ RUN echo "Welcome to SSH Lab!" >/etc/motd
 
 COPY $SSHD_CONFIG /etc/ssh/sshd_config
 
-COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
-COPY $PRIV_KEY  /home/$USER/.ssh/
+COPY .ssh/  /home/$USER/.ssh/
+COPY ./ssh/id_ed25519 /home/$USER/.ssh/authorized_keys
 #RUN chown -R $USER /home/$USER/.ssh/*
 RUN chown -R $USER:$USER /home/$USER/.ssh/
 RUN chmod 700   /home/$USER/.ssh/*
