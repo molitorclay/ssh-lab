@@ -28,7 +28,7 @@ RUN echo "Welcome to SSH Lab!" >/etc/motd
 
 COPY $SSHD_CONFIG /etc/ssh/sshd_config
 
-COPY .ssh/  /home/$USER/.ssh/
+COPY ./ssh/  /home/$USER/.ssh/
 COPY ./ssh/id_ed25519 /home/$USER/.ssh/authorized_keys
 #RUN chown -R $USER /home/$USER/.ssh/*
 RUN chown -R $USER:$USER /home/$USER/.ssh/
