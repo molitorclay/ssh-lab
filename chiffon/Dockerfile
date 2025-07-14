@@ -11,8 +11,8 @@ EXPOSE 22
 
 #TODO add password
 RUN adduser $USER -D
-RUN echo $USER":124" | chpasswd
-RUN echo  "root:124" | chpasswd
+#RUN echo $USER":124" | chpasswd
+#RUN echo  "root:124" | chpasswd
 
 
 RUN apk add --no-cache sudo bash tmux 
