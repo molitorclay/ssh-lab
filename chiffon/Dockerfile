@@ -20,7 +20,7 @@ RUN apk add --no-cache sudo bash tmux
 
 # --------- Setup SSHD ---------
 USER root
-RUN apk add --no-cache openssh openrc
+RUN apk add --no-cache openssh
 #RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
 #RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN ssh-keygen -A
@@ -44,6 +44,4 @@ USER root
 WORKDIR /home/$USER
 # Start sshd and allow Ctrl-C breaking
 #CMD ["sh", "-c", "/usr/sbin/sshd -D; sh"]
-RUN rc-update add sshd
-
-#CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/usr/sbin/sshd", "-D"]

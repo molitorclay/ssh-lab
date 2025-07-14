@@ -6,6 +6,5 @@ git add *
 git commit -m "fixup! BUILD-TEST"  
 #docker build -t "ssh-lab" . "$@" && \
 #docker run -it --rm ssh-lab 
-docker compose down
 docker compose up --build
-
+docker compose down
