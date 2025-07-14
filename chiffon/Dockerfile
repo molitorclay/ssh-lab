@@ -5,19 +5,22 @@ FROM alpine:latest
 # --build-arg USER=Jiminy
 ARG USER
 ARG SSHD_CONFIG
-ARG USER_KEY
+ARG AUTHORIZED_KEY
+ARG PRIV_KEY
+
+EXPOSE 22
 
 #TODO add password
 RUN adduser $USER -D
-RUN echo $USER":124" | chpasswd
-RUN echo  "root:124" | chpasswd
+#RUN echo $USER":124" | chpasswd
+#RUN echo  "root:124" | chpasswd
 
 
-RUN apk add sudo bash tmux screen
+RUN apk add --no-cache sudo bash tmux screen
 
 # --------- Setup SSHD ---------
 USER root
-RUN apk add --update --no-cache openssh
+RUN apk add --no-cache openssh
 #RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
 #RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN ssh-keygen -A
@@ -25,14 +28,14 @@ RUN echo "Welcome to SSH Lab!" >/etc/motd
 
 COPY $SSHD_CONFIG /etc/ssh/sshd_config
 
-EXPOSE 22
-
-COPY $USER_KEY /home/$USER/.ssh/authorized_keys
+COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
+COPY $PRIV_KEY  /home/$USER/.ssh/
+RUN chown $USER /home/$USER/.ssh/*
+RUN chmod 700   /home/$USER/.ssh/*
+RUN chmod 700   /home/$USER/.ssh/authorized_keys
 
 # Allow self ssh for debugging
-COPY ./ssh/id_ed25519  /home/$USER/.ssh/id_ed25519
-RUN chown $USER /home/$USER/.ssh/id_ed25519  
-
+#COPY ./ssh/id_ed25519  /home/$USER/.ssh/id_ed25519
 
 # --------- login --------
 #USER $USER
@@ -40,4 +43,4 @@ USER root
 WORKDIR /home/$USER
 # Start sshd and allow Ctrl-C breaking
 #CMD ["sh", "-c", "/usr/sbin/sshd -D; sh"]
-CMD ["/usr/sbin/sshd -D"]
+CMD ["/usr/sbin/sshd", "-D"]
