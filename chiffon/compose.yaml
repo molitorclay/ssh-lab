@@ -13,6 +13,11 @@ services:
       - "2222:22"
     networks: 
       - internal
+    mounts:
+      - type: bind
+        source: ../
+        target: /home/rta/build
+        read_only: true
     
   ssh_b:
     build:
