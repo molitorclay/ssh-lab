@@ -48,5 +48,6 @@ RUN chmod 600  /home/$USER/.ssh/authorized_keys
 #USER $USER
 USER root
 WORKDIR /home/$USER
-# Start sshd and allow Ctrl-C breaking
-CMD ["/usr/sbin/sshd", "-D"]
+# Start sshd
+# Moved sshd start to compose.yaml
+#CMD ["/usr/sbin/sshd", "-D"]
