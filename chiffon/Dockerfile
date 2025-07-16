@@ -1,5 +1,5 @@
 FROM alpine:latest
-
+TAG ssh-lab
 # pass args at buildtime
 # --build-arg USER=Jiminy
 ARG USER=rta 
