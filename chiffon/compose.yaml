@@ -2,22 +2,26 @@ services:
   ssh_a:
     hostname: ssh_a
     build:
-      context: a
-      dockerfile: bld.Dockerfile 
+      context: .
+      dockerfile: a/bld.Dockerfile 
     command: /usr/sbin/sshd -D
+    args:
+      - "CONTEXT=a"
     ports:
       - "2222:22"
     networks: 
       - internal
-    volumes:
+    volumes: #Host all keys for debugging
       - ./:/home/rta/build:ro
     
   ssh_b:
     hostname: ssh_b
     build:
-      context: b
-      dockerfile: bld.Dockerfile 
+      context: .
+      dockerfile: b/bld.Dockerfile 
     command: /usr/sbin/sshd -D
+    args:
+      - "CONTEXT=b"
     networks:
       - internal
 
