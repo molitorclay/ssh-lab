@@ -1,12 +1,6 @@
 services:
-  ssh_base:
-    build:
-      context: .
-      dockerfile: Dockerfile 
-
   ssh_a:
-    depends_on:
-      - ssh_base
+    
     build:
 
       context: a
