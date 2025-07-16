@@ -3,7 +3,7 @@
 
 # names of ssh images to build.
 # There must be a directory for each name.
-IMAGES="a b"
+IMAGES="a b c"
 
 git add *
 #git commit --fixup -m "BUILD-TEST"  
