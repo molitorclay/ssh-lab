@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: a/bld.Dockerfile 
       args:
-        CONTEXT: a
+        SELF: a
         #SSHD_CONFIG: sshd_config
         #AUTHORIZED_KEY: ssh/id_ed25519.pub
         #SSH_KEY_DIR: ssh/id_ed25519
@@ -24,7 +24,7 @@ services:
       context: .
       dockerfile: b/bld.Dockerfile 
       args:
-        CONTEXT: b
+        SELF: b
     command: /usr/sbin/sshd -D
     
     networks:

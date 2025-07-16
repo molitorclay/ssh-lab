@@ -6,7 +6,7 @@ ARG USER=rta
 #ARG SSHD_CONFIG
 #ARG AUTHORIZED_KEY
 #ARG SSH_KEY_DIR
-ARG CONTEXT
+ARG SELF
 
 EXPOSE 22
 
@@ -32,7 +32,7 @@ RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config
 RUN echo 'PermitTunnel yes' >> /etc/ssh/sshd_config
 
-COPY ./$CONTEXT/ssh/ /home/$USER/.ssh/
+COPY ./$SELF/ssh/ /home/$USER/.ssh/
 #COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
 RUN touch /home/$USER/.ssh/authorized_keys
 
