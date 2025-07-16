@@ -17,6 +17,7 @@ for i in $IMAGES
 do
 	cat Dockerfile $i/$i.Dockerfile > $i/bld.Dockerfile
 
-then
+done
+
 docker compose up --build
 docker compose down
