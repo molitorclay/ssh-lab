@@ -1,12 +1,12 @@
 services:
   ssh_a:
-    
+    hostname: ssh_a
     build:
-
+      labels:
+        - com.host.description=label
       context: a
       dockerfile: ../Dockerfile 
       args:
-        USER: rta 
         #SSHD_CONFIG: sshd_config
         AUTHORIZED_KEY: ssh/id_ed25519.pub
         #SSH_KEY_DIR: ssh/id_ed25519
@@ -18,11 +18,11 @@ services:
       - ./:/home/rta/build:ro
     
   ssh_b:
+    hostname: ssh_b
     build:
       context: b
       dockerfile: ../Dockerfile 
       args:
-        USER: rta
         #SSHD_CONFIG: sshd_config
         AUTHORIZED_KEY: ssh/id_ed25519.pub
         #SSH_KEY_DIR: ssh/id_ed25519
