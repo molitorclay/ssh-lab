@@ -6,7 +6,7 @@ services:
       dockerfile: a/bld.Dockerfile 
     command: /usr/sbin/sshd -D
     args:
-      - "CONTEXT=a"
+      CONTEXT: a
     ports:
       - "2222:22"
     networks: 
@@ -20,7 +20,8 @@ services:
       context: .
       dockerfile: b/bld.Dockerfile 
     command: /usr/sbin/sshd -D
-    
+    args:
+      CONTEXT: b
     networks:
       - internal
 
