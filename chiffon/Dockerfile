@@ -35,7 +35,7 @@ RUN echo 'PermitTunnel yes' >> /etc/ssh/sshd_config
 
 COPY ssh/            /home/$USER/.ssh/
 #COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
-COPY touch /home/$USER/.ssh/authorized_keys
+RUN touch /home/$USER/.ssh/authorized_keys
 
 RUN chown -R $USER:$USER /home/$USER/.ssh/
 RUN chmod 700  /home/$USER/.ssh/*
