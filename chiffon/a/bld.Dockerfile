@@ -49,7 +49,7 @@ WORKDIR /home/$USER
 #CMD ["/usr/sbin/sshd", "-D"]
 
 #self ssh
-COPY ssh/id_ed25519.pub /home/$USER/.ssh/authorized_keys
+COPY ./$CONTEXT/ssh/id_ed25519.pub /home/$USER/.ssh/authorized_keys
 
 
 
