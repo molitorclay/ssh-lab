@@ -31,6 +31,7 @@ RUN echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
 RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config
 RUN echo 'PermitTunnel yes' >> /etc/ssh/sshd_config
+RUN echo 'Subsystem sftp internal-sftp' >> /etc/ssh/sshd_config
 
 COPY ./$SELF/ssh/ /home/$USER/.ssh/
 #COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
