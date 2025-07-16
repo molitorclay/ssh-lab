@@ -4,9 +4,15 @@ services:
     build:
       context: .
       dockerfile: a/bld.Dockerfile 
+      args:
+        CONTEXT: a
+        #SSHD_CONFIG: sshd_config
+        #AUTHORIZED_KEY: ssh/id_ed25519.pub
+        #SSH_KEY_DIR: ssh/id_ed25519
     command: /usr/sbin/sshd -D
     args:
       CONTEXT: a
+      
     ports:
       - "2222:22"
     networks: 
@@ -19,9 +25,10 @@ services:
     build:
       context: .
       dockerfile: b/bld.Dockerfile 
+      args:
+        CONTEXT: b
     command: /usr/sbin/sshd -D
-    args:
-      CONTEXT: b
+    
     networks:
       - internal
 
