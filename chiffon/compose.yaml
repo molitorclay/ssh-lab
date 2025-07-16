@@ -1,5 +1,12 @@
 services:
+  ssh_base:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+
   ssh_a:
+    depends_on:
+      - ssh_base
     build:
 
       context: a
@@ -14,7 +21,7 @@ services:
     networks: 
       - internal
     volumes:
-      - ../:/home/rta/build:ro
+      - ./:/home/rta/build:ro
     
   ssh_b:
     build:

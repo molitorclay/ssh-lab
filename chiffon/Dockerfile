@@ -10,12 +10,12 @@ ARG AUTHORIZED_KEY
 EXPOSE 22
 
 RUN adduser $USER -D
-# NOTE removing chpasswd disables publickey ssh sign in
+# NOTE removing chpasswd breaks publickey ssh sign in
 RUN echo $USER":124" | chpasswd
 RUN echo  "root:124" | chpasswd
 
 
-RUN apk add --no-cache sudo bash tmux 
+RUN apk add --no-cache sudo bash tmux sl 
 
 # --------- Setup SSHD ---------
 USER root
