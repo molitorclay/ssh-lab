@@ -19,6 +19,8 @@ git commit -m "fixup! BUILD-TEST"
 for i in $SSH_IMAGES
 do
     cat Dockerfile $i/Dockerfile end.Dockerfile > $i/bld.Dockerfile
+    echo $i"/bld.Dockerfile:"
+    cat $i/bld.Dockerfile
     ssh-keygen -t ed25519 -f $i/ssh/id_ed25519 -C "rta@"$i -N "" <<< 'y' >/dev/null 
 done
 
