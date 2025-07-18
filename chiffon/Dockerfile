@@ -29,7 +29,6 @@ RUN echo "Welcome to "$SELF"! Enjoy your stay." >/etc/motd
 RUN echo '# ==== sshd_config =====' > /etc/ssh/sshd_config
 RUN echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
 RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
-RUN echo 'Subsystem sftp internal-sftp' >> /etc/ssh/sshd_config
 
 
 FROM ssh_base
