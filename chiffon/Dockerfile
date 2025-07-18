@@ -16,13 +16,13 @@ RUN echo $USER":124" | chpasswd
 #RUN echo  "root:124" | chpasswd
 
 
-RUN apk add --no-cache sudo screen sl 
+RUN apk add --no-cache bash nano screen sl 
 
 # --------- Setup SSHD ---------
 USER root
 RUN apk add --no-cache openssh
 RUN ssh-keygen -A
-RUN echo "Welcome to "$SELF"! Have a nice stay." >/etc/motd
+RUN echo "Welcome to "$SELF"! Enjoy your stay." >/etc/motd
 
 
 #Clear and recreate sshd_config
