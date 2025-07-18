@@ -16,7 +16,7 @@ RUN echo $USER":124" | chpasswd
 #RUN echo  "root:124" | chpasswd
 
 
-RUN apk add --no-cache bash nano screen sl wall 
+RUN apk add --no-cache bash nano screen sl
 
 # --------- Setup SSHD ---------
 USER root
