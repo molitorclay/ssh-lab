@@ -4,8 +4,8 @@
 # names of ssh images to build.
 # There must be a directory for each name.
 
-SSH_IMAGES=(ssh_a ssh_b ssh_c ssh_d ssh_e ssh_f)
-SSH_IMAGES=(ssh_a ssh_b ssh_c ssh_d )
+SSH_IMAGES="ssh_a ssh_b ssh_c ssh_d ssh_e ssh_f"
+SSH_IMAGES="ssh_a ssh_b ssh_c ssh_d"
 
 git add *
 #git commit --fixup -m "BUILD-TEST"  
