@@ -46,10 +46,28 @@ services:
       - cd
       - de
 
+  ssh_e:
+    hostname: ssh_e
+    build:
+      context: .
+      dockerfile: ssh_e/bld.Dockerfile
+      args:
+        SELF: ssh_e
+    networks:
+      - de
+      - ef
 
+  ssh_f:
+    hostname: ssh_f
+    build:
+      context: .
+      dockerfile: ssh_f/bld.Dockerfile
+      args:
+        SELF: ssh_f
+    networks:
+      - ef
 
 networks:
-  internal: {}
   ab: {}
   bc: {}
   cd: {}

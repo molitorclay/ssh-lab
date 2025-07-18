@@ -5,7 +5,6 @@
 # There must be a directory for each name.
 
 SSH_IMAGES="ssh_a ssh_b ssh_c ssh_d ssh_e ssh_f"
-SSH_IMAGES="ssh_a ssh_b ssh_c ssh_d ssh_e"
 
 git add *
 #git commit --fixup -m "BUILD-TEST"  
