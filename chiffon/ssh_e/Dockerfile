@@ -5,6 +5,7 @@ COPY --chown=$USER:$USER $SELF/ssh/id_ed25519.pub /home/$USER/.ssh/authorized_ke
 RUN chmod 600         /home/$USER/.ssh/authorized_keys
 
 RUN echo 'PermitOpen none' >> /etc/ssh/sshd_config
+RUN echo 'PermitListen *' >> /etc/ssh/sshd_config
 
 # Key for connecting to E, is password protected 
 COPY ssh_e/ssh/id_ed25519 /home/$USER/E\'s_keys
