@@ -14,10 +14,10 @@ EXPOSE 22
 RUN adduser $USER -D
 # NOTE removing chpasswd breaks publickey ssh sign in
 RUN echo $USER":124" | chpasswd
-RUN echo  "root:124" | chpasswd
+#RUN echo  "root:124" | chpasswd
 
 
-RUN apk add --no-cache sudo bash tmux sl 
+RUN apk add --no-cache sudo bash tmux screen sl 
 
 # --------- Setup SSHD ---------
 USER root
