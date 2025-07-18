@@ -31,6 +31,7 @@ PORTS_LENGTH=${#PORTS[*]}
 RAND=$(($RANDOM % $PORTS_LENGTH))
 SSH_PORT=${PORTS[$RAND]}
 echo $SSH_PORT > ssh_d/port
+echo $SSH_PORT 
 
 
 
