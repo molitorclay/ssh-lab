@@ -13,11 +13,11 @@ EXPOSE 22
 
 RUN adduser $USER -D
 # NOTE removing chpasswd breaks publickey ssh sign in
-#RUN echo $USER":124" | chpasswd
+RUN echo $USER":124" | chpasswd
 #RUN echo  "root:124" | chpasswd
 
 
-RUN apk add --no-cache sudo bash tmux screen sl 
+RUN apk add --no-cache sudo screen sl 
 
 # --------- Setup SSHD ---------
 USER root
@@ -36,7 +36,6 @@ RUN echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config
 RUN echo 'PermitTunnel yes' >> /etc/ssh/sshd_config
 
 COPY ./$SELF/ssh/ /home/$USER/.ssh/
-#COPY $AUTHORIZED_KEY /home/$USER/.ssh/authorized_keys
 RUN touch /home/$USER/.ssh/authorized_keys
 
 RUN chown -R $USER:$USER /home/$USER/.ssh/
