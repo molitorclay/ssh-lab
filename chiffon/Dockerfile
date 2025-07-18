@@ -1,8 +1,7 @@
 # ==== Dockerfile =====
 FROM alpine:latest AS ssh_base
+# 'AS' may make building faster?
 
-# pass args at buildtime
-# --build-arg USER=Jiminy
 ARG USER=rta 
 #ARG SSHD_CONFIG
 #ARG AUTHORIZED_KEY
@@ -23,21 +22,17 @@ RUN apk add --no-cache sudo screen sl
 USER root
 RUN apk add --no-cache openssh
 RUN ssh-keygen -A
-RUN echo "Welcome to "$SELF"!" >/etc/motd
+RUN echo "Welcome to "$SELF"! Enjoy your stay." >/etc/motd
 
 
 #Clear and recreate sshd_config
-RUN echo '#sshd_config' > /etc/ssh/sshd_config
+RUN echo '# ==== sshd_config =====' > /etc/ssh/sshd_config
 RUN echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
 RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN echo 'Subsystem sftp internal-sftp' >> /etc/ssh/sshd_config
 
-RUN echo 'AllowTcpForwarding no' >> /etc/ssh/sshd_config
-RUN echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config
-RUN echo 'PermitTunnel yes' >> /etc/ssh/sshd_config
 
-
-FROM ssh_base AS ssh_keys
+FROM ssh_base 
 
 COPY ./$SELF/ssh/ /home/$USER/.ssh/
 RUN touch /home/$USER/.ssh/authorized_keys

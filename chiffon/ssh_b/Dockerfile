@@ -9,3 +9,5 @@ RUN chmod 600         /home/$USER/.ssh/authorized_keys
 # Removing here to force the key located on A to be used.
 RUN rm /home/$USER/.ssh/id_ed25519* 
 
+
+RUN echo "rm ~/.ssh/id_ed25519*" > /home/$USER/.ash_history
