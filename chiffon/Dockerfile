@@ -23,7 +23,7 @@ RUN apk add --no-cache sudo screen sl
 USER root
 RUN apk add --no-cache openssh
 RUN ssh-keygen -A
-RUN echo "Welcome to SSH Lab!" >/etc/motd
+RUN echo "Welcome to "$SELF"!" >/etc/motd
 
 
 #Clear and recreate sshd_config
@@ -32,8 +32,8 @@ RUN echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
 RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN echo 'Subsystem sftp internal-sftp' >> /etc/ssh/sshd_config
 
-RUN echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config
 RUN echo 'AllowTcpForwarding no' >> /etc/ssh/sshd_config
+RUN echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config
 RUN echo 'PermitTunnel yes' >> /etc/ssh/sshd_config
 
 
