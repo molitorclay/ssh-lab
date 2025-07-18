@@ -13,7 +13,7 @@ EXPOSE 22
 
 RUN adduser $USER -D
 # NOTE removing chpasswd breaks publickey ssh sign in
-RUN echo $USER":124" | chpasswd
+#RUN echo $USER":124" | chpasswd
 #RUN echo  "root:124" | chpasswd
 
 
