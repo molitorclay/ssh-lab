@@ -1,5 +1,5 @@
 # ==== Dockerfile =====
-FROM alpine:latest as ssh_base
+FROM alpine:latest AS ssh_base
 
 # pass args at buildtime
 # --build-arg USER=Jiminy
@@ -33,10 +33,11 @@ RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN echo 'Subsystem sftp internal-sftp' >> /etc/ssh/sshd_config
 
 RUN echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config
+RUN echo 'AllowTcpForwarding no' >> /etc/ssh/sshd_config
 RUN echo 'PermitTunnel yes' >> /etc/ssh/sshd_config
 
 
-FROM ssh_base as ssh_keys
+FROM ssh_base AS ssh_keys
 
 COPY ./$SELF/ssh/ /home/$USER/.ssh/
 RUN touch /home/$USER/.ssh/authorized_keys
