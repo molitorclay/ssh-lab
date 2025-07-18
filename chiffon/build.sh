@@ -15,7 +15,7 @@ git commit -m "fixup! BUILD-TEST"
 #docker run -it --rm ssh-lab
 
 # Create full docker files used by compose.yaml
-# Also make ssh keys
+# Make ssh keys
 for i in $SSH_IMAGES
 do
     cat Dockerfile $i/Dockerfile end.Dockerfile > $i/bld.Dockerfile
@@ -31,7 +31,8 @@ PORTS_LENGTH=${#PORTS[*]}
 RAND=$(($RANDOM % $PORTS_LENGTH))
 SSH_PORT=${PORTS[$RAND]}
 echo $SSH_PORT > ssh_d/port
-echo $SSH_PORT 
+#TODO remove echo
+echo "ssh_d port: "$SSH_PORT 
 
 
 
