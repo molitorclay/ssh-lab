@@ -16,7 +16,7 @@ git commit -m "fixup! BUILD-TEST"
 # Create full docker files used by compose.yaml
 for i in $IMAGES
 do
-	cat Dockerfile $i/$i.Dockerfile end.Dockerfile > $i/bld.Dockerfile
+	cat Dockerfile $i/Dockerfile end.Dockerfile > $i/bld.Dockerfile
 
 done
 
