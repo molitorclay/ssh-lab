@@ -10,7 +10,7 @@ RUN echo "Port "$(cat port) >> /etc/ssh/sshd_config
 RUN rm ./port 
 
 # Key for connecting to E, is password protected 
-COPY ssh_e/ssh/id_ed25519 /home/$USER/E\'s_keys
+COPY ssh_e/ssh/id_ed25519 /home/$USER/e\'s_keys
 
 #TODO generate and copy jpg with password
 
