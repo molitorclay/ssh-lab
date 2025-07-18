@@ -33,8 +33,18 @@ services:
         SELF: ssh_c
     networks:
       - bc
+      - cd
 
-
+  ssh_d:
+    hostname: ssh_d
+    build:
+      context: .
+      dockerfile: ssh_d/bld.Dockerfile
+      args:
+        SELF: ssh_d
+    networks:
+      - cd
+      - de
 
 
 
@@ -42,3 +52,7 @@ networks:
   internal: {}
   ab: {}
   bc: {}
+  cd: {}
+  de: {}
+  ef: {}
+
