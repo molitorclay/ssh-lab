@@ -22,7 +22,7 @@ RUN apk add --no-cache sudo screen sl
 USER root
 RUN apk add --no-cache openssh
 RUN ssh-keygen -A
-RUN echo "Welcome to "$SELF"! Enjoy your stay." >/etc/motd
+RUN echo "Welcome to "$SELF"! Have a nice stay." >/etc/motd
 
 
 #Clear and recreate sshd_config
@@ -32,7 +32,7 @@ RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
 RUN echo 'Subsystem sftp internal-sftp' >> /etc/ssh/sshd_config
 
 
-FROM ssh_base 
+FROM ssh_base
 
 COPY ./$SELF/ssh/ /home/$USER/.ssh/
 RUN touch /home/$USER/.ssh/authorized_keys
