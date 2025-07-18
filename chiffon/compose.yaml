@@ -3,10 +3,9 @@ services:
     hostname: ssh_a
     build:
       context: .
-      dockerfile: a/bld.Dockerfile 
+      dockerfile: ssh_a/bld.Dockerfile 
       args:
-        SELF: a
-    command: /usr/sbin/sshd -D
+        SELF: ssh_a
     ports:
       - "2222:22"
     networks: 
@@ -18,10 +17,9 @@ services:
     hostname: ssh_b
     build:
       context: .
-      dockerfile: b/bld.Dockerfile 
+      dockerfile: ssh_b/bld.Dockerfile 
       args:
-        SELF: b
-    command: /usr/sbin/sshd -D
+        SELF: ssh_b
     
     networks:
       - ab
@@ -30,10 +28,9 @@ services:
     hostname: ssh_c
     build:
       context: .
-      dockerfile: c/bld.Dockerfile
+      dockerfile: ssh_c/bld.Dockerfile
       args:
-        SELF: c
-    command: /usr/sbin/sshd -D
+        SELF: ssh_c
     networks:
       - bc
 

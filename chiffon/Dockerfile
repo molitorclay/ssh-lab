@@ -1,3 +1,4 @@
+# ==== Dockerfile =====
 FROM alpine:latest
 
 # pass args at buildtime
@@ -42,10 +43,4 @@ RUN chown -R $USER:$USER /home/$USER/.ssh/
 RUN chmod 700  /home/$USER/.ssh/*
 RUN chmod 600  /home/$USER/.ssh/authorized_keys
 
-
-# --------- login --------
-USER root
-WORKDIR /home/$USER
-# Start sshd
-# Moved sshd start to compose.yaml
-#CMD ["/usr/sbin/sshd", "-D"]
+# ==== End of Dockerfile =====

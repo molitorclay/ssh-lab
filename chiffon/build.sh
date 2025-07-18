@@ -3,7 +3,8 @@
 
 # names of ssh images to build.
 # There must be a directory for each name.
-IMAGES="a b c"
+
+SSH_IMAGES="ssh_a ssh_b ssh_c ssh_d ssh_e ssh_f"
 
 git add *
 #git commit --fixup -m "BUILD-TEST"  
@@ -15,7 +16,7 @@ git commit -m "fixup! BUILD-TEST"
 # Create full docker files used by compose.yaml
 for i in $IMAGES
 do
-	cat Dockerfile $i/$i.Dockerfile > $i/bld.Dockerfile
+	cat Dockerfile $i/$i.Dockerfile end.Dockerfile > $i/bld.Dockerfile
 
 done
 
