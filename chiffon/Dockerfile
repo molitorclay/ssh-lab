@@ -16,7 +16,7 @@ RUN echo $USER":124" | chpasswd
 #RUN echo  "root:124" | chpasswd
 
 
-RUN apk add --no-cache bash nano screen sl 
+RUN apk add --no-cache bash nano screen sl wall 
 
 # --------- Setup SSHD ---------
 USER root
@@ -28,7 +28,7 @@ RUN echo "Welcome to "$SELF"! Enjoy your stay." >/etc/motd
 #Clear and recreate sshd_config
 RUN echo '# ==== sshd_config =====' > /etc/ssh/sshd_config
 RUN echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config
-RUN echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config
+RUN echo 'PermitRootLogin no' >> /etc/ssh/sshd_config
 
 
 FROM ssh_base
