@@ -33,6 +33,7 @@ ssh-keygen -t ed25519 -f ssh_d/ssh/id_ed25519 -C "rta@"$i -N $SSH_PASS <<< 'y' >
 
 docker compose build
 # Remove secrets
+cp ssh_a/ssh/id_ed25519 a_key
 for i in $SSH_IMAGES; do
     rm $i/ssh/id_ed25519*
 done
