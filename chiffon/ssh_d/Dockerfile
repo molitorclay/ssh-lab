@@ -14,6 +14,7 @@ COPY $SELF/pass ./pass
 # enable unstable packages 
 RUN echo "@test https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 RUN apk add --no-cache imagemagick 
+RUN magick -background none -fill black -font Arial -pointsize 72 label:"SAMPLE" /home/$USER/password.png
 
 #TODO generate and copy jpg with password
 
