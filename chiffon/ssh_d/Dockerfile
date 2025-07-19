@@ -9,12 +9,15 @@ COPY $SELF/port ./port
 RUN echo "Port "$(cat port) >> /etc/ssh/sshd_config
 RUN rm ./port
 
-# Key for connecting to E, it is password protected 
+# Password for connecting to E. Needed by D's ssh key 
 COPY $SELF/pass ./pass
 # enable unstable packages 
-RUN echo "@test https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-RUN apk add --no-cache imagemagick 
-RUN magick -background none -fill black -font Arial -pointsize 72 label:"SAMPLE" /home/$USER/password.png
+RUN echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN apk add --no-cache imagemagick font-comic-neue@testing
+RUN magick -background none -fill black -font Comic-Neue-Angular-Bold-Italic -pointsize 72 label:$(cat pass) /home/$USER/password.png
+
+RUN rm ./pass
+
 
 #TODO generate and copy jpg with password
 
