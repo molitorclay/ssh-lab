@@ -11,8 +11,9 @@ RUN rm ./port
 
 # Key for connecting to E, it is password protected 
 COPY $SELF/pass ./pass
-
-RUN apk add pango lolcat cowsay
+# enable unstable packages 
+RUN echo "@test https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN apk add --no-cache pango lolcat@test cowsay@test
 
 #TODO generate and copy jpg with password
 
