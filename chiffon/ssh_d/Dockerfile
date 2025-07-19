@@ -13,11 +13,11 @@ RUN rm ./port
 COPY $SELF/pass ./pass
 # enable unstable packages 
 RUN echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+# Turn password into png file, to force file extraction by scp
 RUN apk add --no-cache imagemagick font-comic-neue@testing
 RUN magick -background none -fill black -font Comic-Neue-Angular-Bold-Italic -pointsize 72 label:$(cat pass) /home/$USER/password.png
-
+RUN apk remove imagemagick font-comic-neue@test
 RUN rm ./pass
 
 
-#TODO generate and copy jpg with password
 
