@@ -13,7 +13,7 @@ RUN rm ./port
 COPY $SELF/pass ./pass
 # enable unstable packages 
 RUN echo "@test https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-RUN apk add --no-cache pango lolcat@test cowsay@test
+RUN apk add --no-cache imagemagick 
 
 #TODO generate and copy jpg with password
 
