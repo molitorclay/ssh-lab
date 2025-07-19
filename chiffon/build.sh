@@ -25,6 +25,7 @@ echo $SSH_PASS > ssh_d/pass
 # ---- Create full docker files used by compose.yaml ----
 # Make ssh keys
 for i in $SSH_IMAGES; do
+    mkdir -p $i/ssh
     cat Dockerfile $i/Dockerfile end.Dockerfile > $i/bld.Dockerfile
     ssh-keygen -t ed25519 -f $i/ssh/id_ed25519 -C "rta@"$i -N "" <<< 'y' >/dev/null 
 done
