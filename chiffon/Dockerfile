@@ -1,5 +1,6 @@
 # ==== Dockerfile =====
-FROM alpine:latest AS ssh_base
+#FROM alpine:latest AS ssh_base
+FROM alpine:edge AS ssh_base
 # 'AS' may make building faster?
 
 ARG USER=rta 

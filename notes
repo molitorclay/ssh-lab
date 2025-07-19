@@ -9,8 +9,6 @@ Challenges:
 
     agent forwarding
 
-    loging in with pivate key
-
 sshd_config settings:
     AllowTcpForwarding
         PermitOpen

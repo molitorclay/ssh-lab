@@ -9,8 +9,10 @@ COPY $SELF/port ./port
 RUN echo "Port "$(cat port) >> /etc/ssh/sshd_config
 RUN rm ./port
 
-# Key for connecting to E, is password protected 
-COPY ssh_e/ssh/id_ed25519 /home/$USER/e\'s_keys
+# Key for connecting to E, it is password protected 
+COPY $SELF/pass ./pass
+
+RUN apk add pango lolcat cowsay
 
 #TODO generate and copy jpg with password
 
