@@ -39,7 +39,7 @@ for i in $SSH_IMAGES; do
 #    rm $i/ssh/id_ed25519*
     echo "NOT REMOVING KEYS!!!"
 done
-rm ssh_d/port ssh_d/pass
+#rm ssh_d/port ssh_d/pass
 
 docker compose up
 docker compose down
