@@ -16,7 +16,7 @@ COPY ./$SELF/pass ./pass
 RUN echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 # Turn password into png file, to force file extraction by scp
 RUN apk add --no-cache imagemagick font-comic-neue@testing
-RUN magick -background none -fill black -font Comic-Neue-Angular-Bold-Italic -pointsize 72 label:"The password is: "$(cat pass) /home/$USER/password.png
+RUN magick -background white -fill black -font Comic-Neue-Bold -pointsize 72 label:"The password is: "$(cat pass) /home/$USER/password.png
 RUN apk del --no-cache imagemagick font-comic-neue
 RUN rm ./pass
 
