@@ -17,7 +17,7 @@ RUN echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/a
 RUN apk add --no-cache imagemagick font-comic-neue@testing
 RUN magick -background none -fill black -font Comic-Neue-Angular-Bold-Italic -pointsize 72 label:$(cat pass) /home/$USER/password.png
 # TODO make this work
-RUN apk del imagemagick font-comic-neue@testing
+RUN apk del --no-cache imagemagick font-comic-neue
 RUN rm ./pass
 
 
