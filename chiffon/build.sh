@@ -18,8 +18,8 @@ RAND=$(($RANDOM % $PORTS_LENGTH))
 SSH_PORT=${PORTS[$RAND]}
 
 SSH_PASS=$(echo $RANDOM | shasum | head -c 4)
-echo $SSH_PORT > ssh_d/port
-echo $SSH_PASS > ssh_d/pass
+echo $SSH_PORT > ./ssh_d/port
+echo $SSH_PASS > ./ssh_d/pass
 
 
 # ---- Create full docker files used by compose.yaml ----
