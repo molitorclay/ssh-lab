@@ -45,8 +45,6 @@ services:
     networks:
       - cd
       - de
-    ports:
-      - "2223:22"
 
   ssh_e:
     hostname: ssh_e
