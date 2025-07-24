@@ -12,6 +12,7 @@ RUN chown $USER:$USER /home/$USER/.ssh/authorized_keys
 # It can be downloaded from http_c
 RUN cp /home/$USER/.ssh/id_ed25519 /home/$USER/httpc_debug #remove me 
 RUN rm /home/$USER/.ssh/id_ed25519*
+# Show where the key is
 RUN echo "scp ~/.ssh/id_ed5519 root@http_c:~/" > /home/$USER/.ash_history
 RUN echo "ssh http_c -i temp_key" > /home/$USER/.ash_history
 RUN echo "rm ~/.ssh/id_ed5519*" > /home/$USER/.ash_history
