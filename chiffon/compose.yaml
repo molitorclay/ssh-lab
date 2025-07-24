@@ -67,6 +67,18 @@ services:
     networks:
       - ef
 
+  # Websites
+  http_c:
+    hostname: http_c
+    build:
+      context: .
+      dockerfile: http_c/Dockerfile
+      args:
+        SELF: http_c
+    networks:
+      - cd
+
+
 networks:
   ab: {}
   bc: {}
