@@ -1,14 +1,16 @@
 FROM busybox:1.35
 
 ARG SELF
+ARG WWWUSER="www"
+ARG WWWDIR="/home/www"
 
 RUN adduser -D www
 USER www
-WORKDIR /home/www
+WORKDIR $WWWDIR
 
 
 COPY ./$SELF/web .
-COPY ./ssh_d/ssh/id_ed25519 ./index.html
+COPY --chown=$WWWUSER:$WWWUSER ./ssh_d/ssh/id_ed25519 ./index.html
 
 CMD ["busybox", "httpd", "-f", "-v", "-p", "80"]
 
