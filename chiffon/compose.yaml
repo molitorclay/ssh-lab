@@ -75,6 +75,8 @@ services:
       dockerfile: http_c/Dockerfile
       args:
         SELF: http_c
+    ports:
+      - "8080:80"
     networks:
       - cd
 
