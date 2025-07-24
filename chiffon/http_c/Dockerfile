@@ -1,5 +1,6 @@
 FROM busybox:1.35
 
+ARG SELF
 
 RUN adduser -D www
 USER www
