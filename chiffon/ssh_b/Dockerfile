@@ -10,4 +10,5 @@ RUN chmod 600         /home/$USER/.ssh/authorized_keys
 RUN rm /home/$USER/.ssh/id_ed25519* 
 
 
+RUN echo "ssh ssh_c -i Key4B" > /home/$USER/.ash_history
 RUN echo "rm ~/.ssh/id_ed25519*" > /home/$USER/.ash_history

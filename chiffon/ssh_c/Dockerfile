@@ -13,8 +13,8 @@ RUN chown $USER:$USER /home/$USER/.ssh/authorized_keys
 RUN cp /home/$USER/.ssh/id_ed25519 /home/$USER/httpc_debug #remove me 
 RUN rm /home/$USER/.ssh/id_ed25519*
 # Show user key is on http_c
-RUN echo "scp ~/.ssh/id_ed5519 root@http_c:~/" > /home/$USER/.ash_history
-RUN echo "ssh http_c -i temp_key" > /home/$USER/.ash_history
-RUN echo "rm ~/.ssh/id_ed5519*" > /home/$USER/.ash_history
-
+RUN echo "scp ~/.ssh/id_ed5519 root@http_c:~/" >> /home/$USER/.ash_history
+RUN echo "ssh http_c -i temp_key" >> /home/$USER/.ash_history
+RUN echo "rm ~/.ssh/id_ed5519*" >> /home/$USER/.ash_history
+RUN echo "rm temp_key" >> /home/$USER/.ash_history
 
