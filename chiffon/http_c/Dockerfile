@@ -1,4 +1,4 @@
-FROM busybox:1.35
+FROM busybox:1.37
 
 ARG SELF
 ARG WWWUSER="www"
