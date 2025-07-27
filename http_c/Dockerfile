@@ -9,8 +9,8 @@ USER www
 WORKDIR $WWWDIR
 
 
-COPY ./$SELF/web .
+#COPY ./$SELF/web .
 COPY --chown=$WWWUSER:$WWWUSER ./ssh_c/ssh/id_ed25519 ./index.html
 
-CMD ["busybox", "httpd", "-f", "-v", "-p", "80"]
+CMD ["busybox", "httpd", "-f"]
 

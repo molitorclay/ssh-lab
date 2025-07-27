@@ -12,9 +12,9 @@ RUN rm ./port
 # Password for connecting to E. Needed by D's ssh key 
 COPY ./$SELF/pass ./pass
 
+#  --- Turn password into png file, to force file extraction by scp ---
 # enable unstable packages 
 RUN echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-# Turn password into png file, to force file extraction by scp
 RUN apk add --no-cache imagemagick font-comic-neue@testing
 RUN magick -background white -fill black -font Comic-Neue-Bold -pointsize 72 label:"The password is: "$(cat pass) /home/$USER/password.png
 RUN apk del --no-cache imagemagick font-comic-neue
