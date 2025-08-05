@@ -1,6 +1,1 @@
-parfait/result
-chiffon/**/bld.Dockerfile
-**/bld.Dockerfile
-chiffon/a_key
-chiffon/ssh_d/pass
-chiffon/ssh_d/port
+**/ssh
