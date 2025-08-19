@@ -1,0 +1,116 @@
+services:
+  ssh_a:
+    hostname: ssh_a
+    build:
+      context: .
+      dockerfile: ssh_a/bld.Dockerfile 
+      args:
+        SELF: ssh_a
+    ports:
+      - "2222:22"
+    networks: 
+      - ab
+    #volumes: #Host all keys for debugging
+    #  - ./:/home/rta/build:ro
+    
+  ssh_b:
+    hostname: ssh_b
+    build:
+      context: .
+      dockerfile: ssh_b/bld.Dockerfile 
+      args:
+        SELF: ssh_b
+    networks:
+      - ab
+      - bc
+
+  ssh_c:
+    hostname: ssh_c
+    build:
+      context: .
+      dockerfile: ssh_c/bld.Dockerfile
+      args:
+        SELF: ssh_c
+    networks:
+      - bc
+      - cd
+
+  ssh_d:
+    hostname: ssh_d
+    build:
+      context: .
+      dockerfile: ssh_d/bld.Dockerfile
+      args:
+        SELF: ssh_d
+    networks:
+      - cd
+      - de
+
+  ssh_e:
+    hostname: ssh_e
+    build:
+      context: .
+      dockerfile: ssh_e/bld.Dockerfile
+      args:
+        SELF: ssh_e
+    networks:
+      - de
+      - ef
+
+  ssh_f:
+    hostname: ssh_f
+    build:
+      context: .
+      dockerfile: ssh_f/bld.Dockerfile
+      args:
+        SELF: ssh_f
+    networks:
+      - ef
+      - f
+
+  # Websites
+  http_c:
+    hostname: http_c
+    build:
+      context: .
+      dockerfile: http_c/Dockerfile
+      args:
+        SELF: http_c
+    ports:
+      - "8081:80" #TODO remove
+    networks:
+      - cd
+
+  http_e:
+    hostname: http_e
+    build:
+      context: .
+      dockerfile: http_e/Dockerfile
+      args:
+        SELF: http_e
+    ports:
+      - "8082:80"
+    networks:
+      - ef
+
+  http_f:
+    hostname: http_f
+    build:
+      context: .
+      dockerfile: http_f/Dockerfile
+      args:
+        SELF: http_f
+    ports:
+      - "8083:80"
+    networks:
+      - f
+
+
+networks:
+  ab: {}
+  bc: {}
+  cd: {}
+  de: {}
+  ef: {}
+  f:  {}
+

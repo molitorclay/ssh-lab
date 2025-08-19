@@ -1,0 +1,31 @@
+A: 
+    login from host
+    - Needs nmap for C
+    - Needs proxyforward4 for C
+B: 
+    Connect with A's key
+C: 
+    Connect with A's key
+    Put message in .ssh mentioning http_c
+    TCP port forward 80 to http_c, grab key
+    Proxy forward nmap to point at D
+D: 
+    Connect with http_c's key
+    Use random-ish port
+    JPG with password
+    Key for E protected by password
+E: 
+    Connect with D's key
+    SSH into A with -R, exposing http_e to A.
+    Block foreign tunneling and all tunnels. 
+F:
+    Disable all tunnels and tcp port forwarding
+    User will Run SSHD -D -h ~/etc/ssh -p 2223 -k ~/sshd_config 
+
+HTTP_C:
+    C's Key
+HTTP_E:
+    E's Key
+HTTP_F
+    Flag
+
