@@ -9,7 +9,7 @@ ARG SELF
 EXPOSE 22
 
 
-RUN apk add --no-cache openssh file bash nano screen sl
+RUN apk add --no-cache openssh file bash nano screen sl tmux
 
 # --------- Setup SSHD ---------
 USER root

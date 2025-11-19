@@ -8,8 +8,8 @@ RUN echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config
 RUN echo 'PermitTunnel yes' >> /etc/ssh/sshd_config
 RUN echo 'Subsystem sftp internal-sftp' >> /etc/ssh/sshd_config
 
-# Uninstall netcat
-RUN rm -rf /usr/bin/nc
+# Uninstall netcat and wget
+RUN rm -rf /usr/bin/nc /usr/bin/wget
 
 WORKDIR /home/$USER
 # Start sshd
