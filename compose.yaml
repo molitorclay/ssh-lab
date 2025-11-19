@@ -76,8 +76,6 @@ services:
       dockerfile: http_c/Dockerfile
       args:
         SELF: http_c
-    ports:
-      - "8081:80" #TODO remove
     networks:
       - cd
 
@@ -88,8 +86,6 @@ services:
       dockerfile: http_e/Dockerfile
       args:
         SELF: http_e
-    ports:
-      - "8082:80"
     networks:
       - ef
 
@@ -100,8 +96,6 @@ services:
       dockerfile: http_f/Dockerfile
       args:
         SELF: http_f
-    ports:
-      - "8083:80"
     networks:
       - f
 
