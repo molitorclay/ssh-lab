@@ -10,6 +10,7 @@ services:
       - "2222:22"
     networks: 
       - ab
+      - demo
     #volumes: #Host all keys for debugging
     #  - ./:/home/rta/build:ro
     
@@ -23,6 +24,7 @@ services:
     networks:
       - ab
       - bc
+      - demo
 
   ssh_c:
     hostname: ssh_c
@@ -34,6 +36,7 @@ services:
     networks:
       - bc
       - cd
+      - demo
 
   ssh_d:
     hostname: ssh_d
@@ -45,6 +48,7 @@ services:
     networks:
       - cd
       - de
+      - demo
 
   ssh_e:
     hostname: ssh_e
@@ -56,6 +60,7 @@ services:
     networks:
       - de
       - ef
+      - demo
 
   ssh_f:
     hostname: ssh_f
@@ -67,6 +72,7 @@ services:
     networks:
       - ef
       - f
+      - demo
 
   # Websites
   http_c:
@@ -78,6 +84,7 @@ services:
         SELF: http_c
     networks:
       - cd
+      - demo
 
   http_e:
     hostname: http_e
@@ -88,6 +95,7 @@ services:
         SELF: http_e
     networks:
       - ef
+      - demo
 
   http_f:
     hostname: http_f
@@ -98,6 +106,7 @@ services:
         SELF: http_f
     networks:
       - f
+      - demo
 
 
 networks:
@@ -107,4 +116,4 @@ networks:
   de: {}
   ef: {}
   f:  {}
-
+  demo: {}

@@ -29,3 +29,33 @@ HTTP_E:
 HTTP_F
     Flag
 
+
+
+Solution
+host:
+    ssh rta@localhost -p 1234 -o UserKnownHostsFile=/dev/null 
+ssh_a:
+    eval $(ssh-agent)
+    ssh-add Key2B
+    ssh-add
+    tmux
+    ssh ssh_b -A
+ssh_b:
+    ssh-add
+    ssh ssh_c -A
+ssh_c:
+    dead end, go back to ssh_a
+ssh_a:
+    create tmux tab: crtl+b c
+    ssh ssh_b -C "ping ssh_c"
+    ssh -J ssh_b {ssh_c ip} -A -D localhost:9050
+    In new tab:
+    proxychains nmap -sT {http_c ip}
+    proxychains curl {http_c ip}
+
+ssh_c:
+    ssh ssh_d - won't work
+ssh_a:
+    proxychains nmap -sT {ssh_d ip} 
+    ssh -J ssh_b,{ssh_c ip} ssh_d -P {port} -A
+
